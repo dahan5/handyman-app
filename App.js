@@ -5,7 +5,7 @@ import AppLoading from 'expo-app-loading';
 import * as Font from "expo-font";
 import { StatusBar } from 'expo-status-bar';
 
-import { read, clear } from "./src/utils/services/auth";
+import { read } from "./src/utils/services/auth";
 import store from "./src/redux/store";
 import Navigator from "./src/navigation/";
 
@@ -21,7 +21,7 @@ const App = () => {
     const [resourcesLoaded, setResourcesLoaded] = useState(false);
 
     useEffect(() => {
-        clear();
+        read();
     }, [])
 
     if (resourcesLoaded) {

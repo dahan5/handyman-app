@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import Colors from "../utils/constants/colors";
 import { selectIsAuth } from "../redux/user/selectors";
 import HomeScreen, { HomeOptions } from "../screens/HomeScreen";
 import ListProvidersScreen, { ListProvidersOptions } from "../screens/ListProvidersScreen";
@@ -23,7 +24,7 @@ const MainStack = ({ navigation }) => {
             style={{ paddingRight: 25 }}
             onPress={() => navigation.navigate('Login')}
         >
-            <Text>Login/SignUp</Text>
+            <Text style={{color: Colors.blue}}>Login/SignUp</Text>
         </TouchableOpacity>
     }
 

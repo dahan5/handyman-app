@@ -1,7 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import { get as _get } from "lodash";
 
-
 import { REQUEST, SUCCESS } from "../action";
 import { sendPayload, sendPayloadFailure } from "../_helpers";
 import {
@@ -14,13 +13,13 @@ import {
 import {
     refresh, getOTP, verifyOTP
 } from "../../utils/services";
-import { remember } from "../../utils/services/auth";
+import { remember, clear } from "../../utils/services/auth";
 
 
 function* handleLogoutUser() {
     try {
         yield put({ type: LOGOUT[SUCCESS] });
-        yield call(Router.push, '/');
+        clear();
         yield put({ type: GET_SERVICES[REQUEST] })
     } catch (e) {
         yield sendPayloadFailure(e, LOGOUT);

@@ -143,7 +143,6 @@ export const SelectedFilterOptions = data => {
                         }
                     </View>
                 </View>
-                <View></View>
             </View>
         )
     }
