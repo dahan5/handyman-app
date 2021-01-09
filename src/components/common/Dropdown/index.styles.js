@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         padding: 5,
         position: 'relative',
-        marginVertical: 15,
+        marginVertical: 5,
     },
     label: {
         position: 'absolute',

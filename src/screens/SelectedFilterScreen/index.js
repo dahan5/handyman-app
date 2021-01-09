@@ -112,15 +112,18 @@ const SelectedFilterScreen = props => {
                         marathi={"VILLAGE_KEY_ID__VILLAGE_MR"}
                         enabled={!!taluka}
                     />
-                    <TouchableOpacity>
-                        <Button
-                            title='Search'
-                            style={styles.button}
-                            color={Colors.primaryButtonColor}
-                            disabled={!(district && taluka && city)}
-                            onPress={navigate}
-                        />
-                    </TouchableOpacity>
+                    <View style={styles.buttonContainer}>
+                        <View style={styles.buttonView}>
+                            <TouchableOpacity>
+                                <Button
+                                    title='Search'
+                                    color={Colors.primaryButtonColor}
+                                    disabled={!(district && taluka && city)}
+                                    onPress={navigate}
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
                 </View>
             </View>
         </ScreenContainer>

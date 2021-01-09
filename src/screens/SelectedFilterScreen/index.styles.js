@@ -12,9 +12,6 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    container: {
-        paddingTop: 30
-    },
     titleContainer: {
         display: 'flex',
         flexDirection: 'row',
@@ -45,6 +42,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         marginLeft: 'auto',
         marginRight: 'auto',
+        marginTop: 25,
         backgroundColor: 'white',
         borderRadius: 10,
         shadowOffset: {
@@ -55,6 +53,8 @@ export const styles = StyleSheet.create({
         shadowOpacity: .7,
         overflow: 'hidden',
         padding: 10,
+        paddingBottom: 20,
+        overflow: 'visible'
     },
     selectHeader: {
         borderBottomColor: '#cecece',
@@ -73,12 +73,22 @@ export const styles = StyleSheet.create({
         marginLeft: 7,
     },
     dropdownContainer: {
-        marginTop: 12,
-        paddingHorizontal: 7
+        paddingTop: 12,
+        paddingHorizontal: 7,
+        position: 'relative',
+        overflow: 'visible'
     },
-    button: {
-        width: '80%',
+    buttonContainer: {
+        position: 'absolute',
+        left: 5,
+        width: '100%',
+        bottom: -35,
+        overflow: 'hidden'
+    },
+    buttonView: {
+        width: '100%',
         marginLeft: 'auto',
         marginRight: 'auto',
+        overflow: 'hidden'
     }
 })

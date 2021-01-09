@@ -2,7 +2,6 @@ import React from "react";
 
 import { View } from 'react-native';
 import { Dropdown } from 'react-native-material-dropdown-v2-fixed';
-import Icon from "react-native-vector-icons/Entypo"
 
 import { styles } from "./index.styles";
 import Colors from "../../../utils/constants/colors";
