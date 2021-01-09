@@ -71,6 +71,7 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         color: Colors.secondaryTextColor,
         marginLeft: 7,
+        fontWeight: 'bold'
     },
     dropdownContainer: {
         paddingTop: 12,
@@ -80,7 +81,7 @@ export const styles = StyleSheet.create({
     },
     buttonContainer: {
         position: 'absolute',
-        left: 5,
+        left: 7,
         width: '100%',
         bottom: -35,
         overflow: 'hidden'
