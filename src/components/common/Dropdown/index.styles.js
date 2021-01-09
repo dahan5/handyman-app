@@ -9,7 +9,6 @@ const {
 export const styles = StyleSheet.create({
     container: {
         borderColor: Colors.borderColor,
-        borderWidth: 1,
         borderRadius: 5,
         padding: 5,
         position: 'relative',

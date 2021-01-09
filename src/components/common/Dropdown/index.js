@@ -1,64 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import { Picker } from '@react-native-picker/picker';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Dropdown } from 'react-native-material-dropdown-v2-fixed';
+import Icon from "react-native-vector-icons/Entypo"
 
 import { styles } from "./index.styles";
+import Colors from "../../../utils/constants/colors";
 
-const Dropdown = props => {
+const DropdownComponent = props => {
 
     const {
-        value, style = {}, onValueChange, enabled, options, mode,
+        value, style = {}, onValueChange, enabled = true, options, mode,
         uniqueKey, display, marathi, label
     } = props;
 
-    const [showAny, setShowAny] = useState(!value)
-
-    const onHandleChange = item => {
-        if (item !== null)
-            onValueChange(item);
-    }
-
-    useEffect(() => {
-        setShowAny(!value)
-    }, [value])
-
     return (
         <View style={styles.container}>
-            <View style={styles.label}>
-                <Text >{label}</Text>
-            </View>
-            {options.length
-                ? <Picker
-                    selectedValue={value}
-                    style={{ ...styles.dropdown, ...style }}
-                    onValueChange={item => onHandleChange(item)}
-                    enabled={enabled}
-                    mode={mode || 'dialog'}
-                >
-                    {showAny &&
-                        <Picker.Item enabled={false} key='unselectable' value={null} label='Select One' style={styles.default} />
-                    }
-                    {options.map((option, index) => (
-                        <Picker.item
-                            key={option[uniqueKey]}
-                            label={`${option[display]} ${!!marathi ? `(${option[marathi]})` : ""}`}
-                            value={option[uniqueKey]}
-                        />
-                    ))}
-                </Picker>
-                : <Picker
-                    selectedValue={value}
-                    style={{ ...styles.dropdown, ...style }}
-                    onValueChange={item => onHandleChange(item)}
-                    enabled={enabled}
-                    mode={mode || 'dialog'}
-                >
-                    <Picker.Item enabled={false} key='unselectable' value={null} label='Select One' style={styles.default} />
-                </Picker>
-            }
+            <Dropdown
+                label={label}
+                data={options}
+                onChangeText={item => onValueChange(item)}
+                labelExtractor={item => `${item[display]}${!!marathi ? ` (${item[marathi]})` : ""}`}
+                valueExtractor={item => item[uniqueKey]}
+                labelFontSize={16}
+                iconColor={Colors.primaryTextColor}
+                itemColor={Colors.secondaryTextColor}
+                selectedItemColor={Colors.primaryTextColor}
+                disabled={!enabled}
+                itemCount={6}
+                value={value}
+                renderAccessory={() => { }}
+            />
         </View>
     )
 }
 
-export default Dropdown
+export default DropdownComponent
