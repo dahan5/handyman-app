@@ -3,7 +3,10 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { useTimer } from "react-compound-timer";
 
-import { Text, View, Modal, TouchableOpacity, Animated, ActivityIndicator } from "react-native";
+import { 
+    Text, View, Modal, TouchableOpacity, Animated, ActivityIndicator,
+    Button
+} from "react-native";
 import Icon from "react-native-vector-icons/AntDesign";
 
 import { styles } from './index.styles';
@@ -23,8 +26,8 @@ import TextInput from "../../common/TextInput";
 const Login = ({ navigation, ...props }) => {
 
     const {
-        d__sendOTP, d__verifyOTP, selectIsOtpSent, selectIsOtpSending, d__unsetFlagIsOtpSent,
-        selectIsLoggingIn, selectIsAuth
+        d__sendOTP, d__verifyOTP, selectIsOtpSent, selectIsOtpSending,
+        selectIsLoggingIn, selectIsAuth, d__unsetFlagIsOtpSent,
     } = props;
 
     const {
@@ -60,7 +63,7 @@ const Login = ({ navigation, ...props }) => {
     }, [selectIsOtpSent])
 
     useEffect(() => {
-        if(selectIsAuth)
+        if (selectIsAuth)
             navigation.pop();
     }, [selectIsAuth])
 
@@ -74,9 +77,6 @@ const Login = ({ navigation, ...props }) => {
             >
                 <View style={styles.container}>
                     <View style={styles.loginContainer}>
-                        <TouchableOpacity style={styles.close} onPress={() => navigation.pop()}>
-                            <Icon name="close" size={24} color={Colors.primaryTextColor} />
-                        </TouchableOpacity>
                         <Text style={styles.header}>Sign-in to InfoHandyman.com</Text>
                         <View style={styles.inputContainer}>
                             <TextInput
@@ -123,6 +123,13 @@ const Login = ({ navigation, ...props }) => {
                                         }
                                     </Text>
                                 }
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.cancel}>
+                                <Button
+                                    title='Cancel'
+                                    color={Colors.secondaryTextColor}
+                                    onPress={() => navigation.pop()}
+                                />
                             </TouchableOpacity>
                         </View>
                     </View>

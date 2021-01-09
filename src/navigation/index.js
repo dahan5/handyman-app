@@ -23,7 +23,7 @@ const MainStack = ({ navigation }) => {
 
     const signOut = () => {
         dispatch(logout.request());
-        navigation.navigate('Home')
+        navigation.navigate('Home');
     }
 
     const authButton = () => {
@@ -43,7 +43,7 @@ const MainStack = ({ navigation }) => {
     }
 
     return (
-        <Stack.Navigator screenOptions={{ headerRight: authButton }} mode="card">
+        <Stack.Navigator screenOptions={{ headerRight: authButton }}>
             <Stack.Screen
                 name='Home'
                 component={HomeScreen}

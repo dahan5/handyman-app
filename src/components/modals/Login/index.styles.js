@@ -36,11 +36,6 @@ export const styles = StyleSheet.create({
         elevation: 5,
         backgroundColor: Colors.primaryBackgroundColor,
     },
-    close: {
-        position: 'absolute',
-        top: 5,
-        right: 10,
-    },
     header: {
         fontSize: 20,
         fontWeight: 'bold',
@@ -73,5 +68,8 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         alignSelf: "center",
         textTransform: "uppercase"
+    },
+    cancel: {
+        marginTop: 20
     }
 })
