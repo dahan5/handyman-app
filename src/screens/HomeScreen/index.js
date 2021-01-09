@@ -8,6 +8,7 @@ import { View, Text, FlatList, Image, Linking } from 'react-native';
 import { styles } from "./index.styles";
 import backgroundImage from "../../../assets/images/homepage-banner.png";
 import headerImage from "../../../assets/images/infohandyman.png";
+import howItWorks from "../../../assets/images/how_it_works.png";
 import { selectServices } from "../../redux/services/selectors";
 import { getServices } from "../../redux/services/actions";
 import ServiceCard from "../../components/cards/ServiceCard";
@@ -69,6 +70,15 @@ const HomeScreen = props => {
                         renderItem={renderCard}
                     />
                 </View>
+            </View>
+            <View>
+                <Image
+                    source={howItWorks}
+                    style={styles.howItWorks}
+                    imageStyle={{
+                        alignSelf: "flex-end"
+                    }}
+                />
             </View>
         </ScreenContainer>
     )
