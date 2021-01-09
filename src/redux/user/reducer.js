@@ -38,7 +38,7 @@ const users = () => {
 
       case SEND_OTP[SUCCESS]: return { ...state, isOtpSent: true, isOtpSending: false }
 
-      case LOGGED_IN_USER[SET]: return { ...state, isFetching: false, loggedInUser: action.data , isAuthenticated: true, isOtpSent: false }
+      case LOGGED_IN_USER[SET]: {console.log(action, 'action '); return { ...state, isFetching: false, loggedInUser: action.data , isAuthenticated: true, isOtpSent: false }}
       case VERIFY_OTP[REQUEST]: return { ...state, isLoggingIn: true }
       case VERIFY_OTP[SUCCESS]: return { ...state, isFetching: false, loggedInUser: { ...action.payload, time: new Date() }, isAuthenticated: true, isOtpSent: false, isLoggingIn: false }
       case VERIFY_OTP[FAILURE]: return { ...state, isLoggingIn: false }

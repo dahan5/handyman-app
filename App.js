@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 
 import AppLoading from 'expo-app-loading';
 import * as Font from "expo-font";
-import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
+import { read, clear } from "./src/utils/services/auth";
 import store from "./src/redux/store";
-import Navigator from "./src/navigation/"
+import Navigator from "./src/navigation/";
 
 const fetchFonts = () => {
     Font.loadAsync({
@@ -19,6 +19,10 @@ const fetchFonts = () => {
 const App = () => {
 
     const [resourcesLoaded, setResourcesLoaded] = useState(false);
+
+    useEffect(() => {
+        clear();
+    }, [])
 
     if (resourcesLoaded) {
         return (
@@ -38,13 +42,4 @@ const App = () => {
     }
 }
 
-export default (App)
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+export default App

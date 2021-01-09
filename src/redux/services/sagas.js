@@ -23,9 +23,9 @@ function* handleGetServices() {
     }
 }
 
-function* handleGetDistricts() {
+function* handleGetDistricts({ data }) {
     try {
-        const apiResponse = yield call(getServiceTypeDistricts, {});
+        const apiResponse = yield call(getServiceTypeDistricts, data);
         yield sendPayload(apiResponse, GET_DISTRICTS);
     } catch (e) {
         yield sendPayloadFailure(e, GET_DISTRICTS);

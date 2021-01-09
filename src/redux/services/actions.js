@@ -1,7 +1,7 @@
 import { action, REQUEST, SUCCESS, FAILURE, SET, UNSET } from "../action";
 
 import {
-    GET_SERVICES, GET_DISTRICTS, SET_SERVICEMEN, SET_SERVICES,
+    GET_SERVICES, GET_DISTRICTS, SET_SERVICEMEN,
     GET_TALUKA, GET_PLACES, GET_SERVICEMEN, SET_CONTACT_HITS,
 } from "./types";
 
@@ -11,12 +11,8 @@ export const getServices = {
     failure: ({ error, response }) => action(GET_SERVICES[FAILURE], { error, response }),
 }
 
-export const setServices = {
-    set: data => action(SET_SERVICES[SET], { data })
-}
-
 export const getDistricts = {
-    request: () => action(GET_DISTRICTS[REQUEST], {}),
+    request: data => action(GET_DISTRICTS[REQUEST], { data }),
     success: ({ data, response }) => action(GET_DISTRICTS[SUCCESS], { data, response }),
     failure: ({ error, response }) => action(GET_DISTRICTS[FAILURE], { error, response }),
 }

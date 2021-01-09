@@ -6,19 +6,19 @@ export const styles = StyleSheet.create({
         width: '33.33333%',
         height: 150,
     },
-    text: {
-        textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        paddingVertical: 3,
-        color: Colors.secondaryTextColor,
-    },
     image: {
         width: '70%',
         height: '60%',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 4,
+    },
+    text: {
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        paddingVertical: 3,
+        color: Colors.secondaryTextColor,
     },
     subtext: {
         fontSize: 12,

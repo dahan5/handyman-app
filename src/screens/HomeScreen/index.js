@@ -3,22 +3,22 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from 'reselect';
 
 import Icon from 'react-native-vector-icons/Feather';
-import { View, Text, ScrollView, FlatList, Image, Linking } from 'react-native';
+import { View, Text, FlatList, Image, Linking } from 'react-native';
 
 import { styles } from "./index.styles";
 import backgroundImage from "../../../assets/images/homepage-banner.png";
 import headerImage from "../../../assets/images/infohandyman.png";
 import { selectServices } from "../../redux/services/selectors";
-import { getServices, setServices } from "../../redux/services/actions";
+import { getServices } from "../../redux/services/actions";
 import ServiceCard from "../../components/cards/ServiceCard";
 import ScreenContainer from "../../components/common/ScreenContainer";
 
 const HomeScreen = props => {
 
-    const { selectServices, d__getServices, navigation, d__setServices } = props;
+    const { selectServices, d__getServices, navigation, route } = props;
 
     const renderCard = data => {
-        return <ServiceCard navigation={navigation} item={data.item} setItem={d__setServices} />
+        return <ServiceCard navigation={navigation} item={data.item} />
     }
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const HomeScreen = props => {
                     <View>
                         <Text style={styles.callUsText}>Call Us to register your services</Text>
                         <Text
-                            onPress={() => Linking.openURL('tel:8010614314')}
+                            onPress={() => Linking.openURL('tel:+918010614314')}
                             style={styles.callNumber}
                         >
                             8010614314
@@ -74,8 +74,10 @@ const HomeScreen = props => {
     )
 }
 
-HomeScreen.navigationOptions = {
-    headerTitle: (<Image source={headerImage} style={styles.titleImage} />)
+export const HomeOptions = {
+    headerTitle: <View style={styles.titleContainer}>
+        <Image source={headerImage} style={styles.titleImage} />
+    </View>
 }
 
 const mapStateToProps = createStructuredSelector({
@@ -85,7 +87,6 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = dispatch => {
     return {
         d__getServices: () => dispatch(getServices.request()),
-        d__setServices: data => dispatch(setServices.set(data)),
     }
 }
 

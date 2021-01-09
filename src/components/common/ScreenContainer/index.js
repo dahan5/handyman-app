@@ -1,7 +1,10 @@
 import React from 'react';
 
-import { ScrollView } from 'react-native';
+import { ScrollView, View, Dimensions } from 'react-native';
+
 import Footer from '../Footer';
+
+const { width, height } = Dimensions.get('window');
 
 const ScreenContainer = props => {
     const { children, style, showsVerticalScrollIndicator } = props;
@@ -10,7 +13,9 @@ const ScreenContainer = props => {
             style={style || {}}
             showsVerticalScrollIndicator={showsVerticalScrollIndicator || false}
         >
-            {children}
+            <View style={{ minHeight: (height - 163) }}>
+                {children}
+            </View>
             <Footer />
         </ScrollView>
     )

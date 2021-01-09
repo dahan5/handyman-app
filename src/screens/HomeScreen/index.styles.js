@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+
 import Colors from "../../utils/constants/colors";
 
 const {
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: 'white',
-        marginBottom: 20,
+        marginBottom: SCREEN_WIDTH / 15,
         borderRadius: 10,
         shadowOffset: {
             width: 1,
@@ -69,5 +70,10 @@ export const styles = StyleSheet.create({
     titleImage: {
         width: SCREEN_WIDTH / 2,
         height: 35,
-    }
+    },
+    titleContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+    },
 })

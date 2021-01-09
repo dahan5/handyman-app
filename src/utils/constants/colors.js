@@ -1,9 +1,12 @@
 export default {
     primaryBackgroundColor: 'white',
     secondaryBackgroundColor: '#f7faff',
-    primaryTextColor: 'black',
+    primaryTextColor: '#000000aa',
     secondaryTextColor: '#7D7D7D',
-    borderColor: '',
+    borderColor: '#cecece',
     blue: '#048FED',
+    green: '#03D269',
     footerBackground: '#525252',
+    primaryButtonColor: '#2870b2',
+    secondaryButtonColor: '#2870b2',
 }

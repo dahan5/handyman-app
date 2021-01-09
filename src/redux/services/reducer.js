@@ -14,13 +14,6 @@ const initialState = {
 
 const services = () => {
 
-    const userAction = (state = {}, action) => {
-        switch (action.type) {
-            case SET_SERVICES[SET]: return { searchFor: action.data }
-            default: return state;
-        }
-    }
-
     const services = (state = initialState, action) => {
         switch (action.type) {
             case GET_SERVICES[REQUEST]: return { ...state, isFetching: true }
@@ -81,7 +74,6 @@ const services = () => {
         taluka,
         places,
         servicemen,
-        userAction
     })
 }
 

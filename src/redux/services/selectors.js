@@ -27,12 +27,12 @@ export const selectPlaces = createSelector(
 
 export const selectIsServicemenFetching = createSelector(
     [services],
-    val => _get(val, 'servicemen.isFetching', SERVICEMEN),
+    val => _get(val, 'servicemen.isFetching', false),
 );
 
 export const selectServicemen = createSelector(
     [services],
-    val => _get(val, 'servicemen.servicemen.data', SERVICEMEN),
+    val => _get(val, 'servicemen.servicemen.data', []),
 );
 
 export const selectServicemenPages = createSelector(
