@@ -66,8 +66,9 @@ const ListProvidersScreen = props => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.listContainer}>
-                {selectServicemen.map(item => (
+                {selectServicemen.map((item, index) => (
                     <ServicemenCard
+                        key={index}
                         data={item}
                         selectIsAuth={selectIsAuth}
                         navigation={navigation}

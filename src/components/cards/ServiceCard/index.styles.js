@@ -4,11 +4,11 @@ import Colors from "../../../utils/constants/colors";
 export const styles = StyleSheet.create({
     container: {
         width: '33.33333%',
-        height: 150,
+        height: 135,
     },
     image: {
-        width: '70%',
-        height: '60%',
+        width: '45%',
+        height: '40%',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 4,

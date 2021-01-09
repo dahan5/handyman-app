@@ -28,24 +28,35 @@ const Dropdown = props => {
             <View style={styles.label}>
                 <Text >{label}</Text>
             </View>
-            <Picker
-                selectedValue={value}
-                style={{ ...styles.dropdown, ...style }}
-                onValueChange={item => onHandleChange(item)}
-                enabled={enabled}
-                mode={mode || 'dialog'}
-            >
-                {showAny &&
+            {options.length
+                ? <Picker
+                    selectedValue={value}
+                    style={{ ...styles.dropdown, ...style }}
+                    onValueChange={item => onHandleChange(item)}
+                    enabled={enabled}
+                    mode={mode || 'dialog'}
+                >
+                    {showAny &&
+                        <Picker.Item enabled={false} key='unselectable' value={null} label='Select One' style={styles.default} />
+                    }
+                    {options.map((option, index) => (
+                        <Picker.item
+                            key={option[uniqueKey]}
+                            label={`${option[display]} ${!!marathi ? `(${option[marathi]})` : ""}`}
+                            value={option[uniqueKey]}
+                        />
+                    ))}
+                </Picker>
+                : <Picker
+                    selectedValue={value}
+                    style={{ ...styles.dropdown, ...style }}
+                    onValueChange={item => onHandleChange(item)}
+                    enabled={enabled}
+                    mode={mode || 'dialog'}
+                >
                     <Picker.Item enabled={false} key='unselectable' value={null} label='Select One' style={styles.default} />
-                }
-                {options.map((option, index) => (
-                    <Picker.item
-                        key={option[uniqueKey]}
-                        label={`${option[display]} ${!!marathi ? `(${option[marathi]})` : ""}`}
-                        value={option[uniqueKey]}
-                    />
-                ))}
-            </Picker>
+                </Picker>
+            }
         </View>
     )
 }
