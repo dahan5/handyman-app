@@ -64,7 +64,7 @@ const HomeScreen = props => {
                 </View>
                 <View style={styles.services}>
                     <FlatList
-                        keyExtractor={item => item.SERVICE_TYPE_ID}
+                        keyExtractor={item => item.SERVICE_TYPE_ID.toString()}
                         numColumns={3}
                         data={selectServices}
                         renderItem={renderCard}

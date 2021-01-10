@@ -69,7 +69,7 @@ const ListProvidersScreen = props => {
         <ScreenContainer style={styles.container}>
             <View style={styles.listContainer}>
                 <FlatList
-                    keyExtractor={item => item.SERVICE_PROVIDER_ID}
+                    keyExtractor={item => item.SERVICE_PROVIDER_ID.toString()}
                     numColumns={1}
                     data={selectServicemen}
                     onEndReachedThreshold={0.1}
