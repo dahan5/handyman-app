@@ -1,7 +1,7 @@
-import { action, REQUEST, SUCCESS, FAILURE, SET, UNSET } from "../action";
+import { action, REQUEST, SUCCESS, FAILURE, UNSET } from "../action";
 
 import {
-    GET_SERVICES, GET_DISTRICTS, SET_SERVICEMEN,
+    GET_SERVICES, GET_DISTRICTS, SET_SERVICEMEN, GET_SPECIFIC_SERVICE_DETAILS,
     GET_TALUKA, GET_PLACES, GET_SERVICEMEN, SET_CONTACT_HITS,
 } from "./types";
 
@@ -43,4 +43,10 @@ export const setContactHits = {
     request: data => action(SET_CONTACT_HITS[REQUEST], { data }),
     success: ({ data, response }) => action(SET_CONTACT_HITS[SUCCESS], { data, response }),
     failure: ({ error, response }) => action(SET_CONTACT_HITS[FAILURE], { error, response }),
+}
+
+export const getServiceDetails = {
+    request: data => action(GET_SPECIFIC_SERVICE_DETAILS[REQUEST], { data }),
+    success: ({ data, response }) => action(GET_SPECIFIC_SERVICE_DETAILS[SUCCESS], { data, response }),
+    failure: ({ error, response }) => action(GET_SPECIFIC_SERVICE_DETAILS[FAILURE], { error, response }),
 }

@@ -6,10 +6,10 @@ import { REQUEST, SET } from "../action";
 import {
     GET_SERVICES, GET_DISTRICTS, SET_CONTACT_HITS,
     GET_PLACES, GET_TALUKA, GET_SERVICEMEN,
-    SET_TOTAL_PAGES,
+    SET_TOTAL_PAGES, GET_SPECIFIC_SERVICE_DETAILS
 } from "./types";
 import {
-    getServices, getServicemen,
+    getServices, getServicemen, getServiceDetails,
     getServiceTypeDistricts, getServiceTypeTaluka,
     getServiceTypePlaces, setContactHits,
 } from "../../utils/services";
@@ -71,6 +71,15 @@ function* handleSetContactHits({ data }) {
     }
 }
 
+function* handleGetServiceDetails({ data }) {
+    try {
+        const apiResponse = yield call(getServiceDetails, data);
+        yield sendPayload(apiResponse, GET_SPECIFIC_SERVICE_DETAILS);
+    } catch (e) {
+        yield sendPayloadFailure(e, GET_SPECIFIC_SERVICE_DETAILS);
+    }
+}
+
 export const serviceSaga = {
     watchGetServices: takeLatest(GET_SERVICES[REQUEST], handleGetServices),
     watchGetDistricts: takeLatest(GET_DISTRICTS[REQUEST], handleGetDistricts),
@@ -78,5 +87,6 @@ export const serviceSaga = {
     watchGetPlaces: takeLatest(GET_PLACES[REQUEST], handleGetPlaces),
     watchGetServicemen: takeLatest(GET_SERVICEMEN[REQUEST], handleGetServicemen),
     watchSetContactHits: takeLatest(SET_CONTACT_HITS[REQUEST], handleSetContactHits),
+    watchGetServiceDetails: takeLeading(GET_SPECIFIC_SERVICE_DETAILS[REQUEST], handleGetServiceDetails),
 }
 

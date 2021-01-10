@@ -29,7 +29,6 @@ export const verifyOTP = (data) => POST(`location/verify_otp/`, data)
 export const getServices = () => GET('/location/get_servicetype_home/');
 export const getServiceDetails = data => POST('/location/get_servicetype_Details/', data);
 
-
 export const getServiceTypeDistricts = data => POST('/location/get_service_type_district/', { state_key_id: 127, ...data });
 export const getServiceTypeTaluka = data => POST('/location/get_service_type_taluka/', data);
 export const getServiceTypePlaces = data => POST('/location/get_service_type_nearbyplaces/', data);

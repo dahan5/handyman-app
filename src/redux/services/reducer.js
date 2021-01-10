@@ -4,7 +4,7 @@ import _get from "lodash/get"
 import { REQUEST, SUCCESS, FAILURE, UNSET, SET } from "../action";
 import {
     GET_SERVICES, GET_PLACES, SET_TOTAL_PAGES,
-    GET_DISTRICTS, GET_TALUKA, SET_SERVICES,
+    GET_DISTRICTS, GET_TALUKA, GET_SPECIFIC_SERVICE_DETAILS,
     GET_SERVICEMEN, SET_SERVICEMEN,
 } from "./types";
 
@@ -68,12 +68,22 @@ const services = () => {
         }
     }
 
+    const selectedService = (state = {}, action) => {
+        switch(action.type) {
+            case GET_SPECIFIC_SERVICE_DETAILS[REQUEST]: return { isUpdating: true }
+            case GET_SPECIFIC_SERVICE_DETAILS[SUCCESS]: return { isUpdating: false, data: action.payload }
+            case GET_SPECIFIC_SERVICE_DETAILS[FAILURE]: return { isUpdating: false, error: action.payload }
+            default: return state;
+        }
+    }
+
     return combineReducers({
         services,
         districts,
         taluka,
         places,
         servicemen,
+        selectedService
     })
 }
 

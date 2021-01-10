@@ -8,10 +8,11 @@ export const styles = StyleSheet.create({
     },
     image: {
         width: '45%',
-        height: '40%',
+        height: '45%',
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom: 4,
+        resizeMode: 'contain'
     },
     text: {
         textAlign: 'center',

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 import { createStructuredSelector } from 'reselect';
-import  _get from "lodash/get";
+import _get from "lodash/get";
 
-import { View, Text } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 
+import Colors from "../../utils/constants/colors";
 import { styles } from "./index.styles";
-import { 
+import {
     getServicemen, servicemen, setContactHits
 } from "../../redux/services/actions";
 import {
     selectIsAuth, selectLoggedInUser
 } from "../../redux/user/selectors";
-import { 
-    selectIsServicemenFetching, selectServicemen, selectServicemenPages 
+import {
+    selectIsServicemenFetching, selectServicemen, selectServicemenPages
 } from "../../redux/services/selectors";
 import ScreenContainer from "../../components/common/ScreenContainer";
 import ServicemenCard from '../../components/cards/ServicemenCard';
@@ -27,6 +28,7 @@ const ListProvidersScreen = props => {
     } = props;
 
     const [pageNumber, setPageNumber] = useState(1);
+    const [endReachedOnMomentum, setEndReachedOnMomentum] = useState(false)
 
     const { cityId, serviceId } = route.params;
     const userId = _get(selectLoggedInUser, 'id');
@@ -39,7 +41,7 @@ const ListProvidersScreen = props => {
         if (scrollThrottle) clearTimeout(scrollThrottle);
         scrollThrottle = setTimeout(() => {
             !selectIsServicemenFetching && fetchData();
-        }, 10);
+        }, 50);
     }
 
     const fetchData = () => {
@@ -66,15 +68,27 @@ const ListProvidersScreen = props => {
     return (
         <ScreenContainer style={styles.container}>
             <View style={styles.listContainer}>
-                {selectServicemen.map((item, index) => (
-                    <ServicemenCard
-                        key={index}
-                        data={item}
-                        selectIsAuth={selectIsAuth}
-                        navigation={navigation}
-                        updateHits={updateHits}
-                    />
-                ))}
+                <FlatList
+                    keyExtractor={item => item.SERVICE_PROVIDER_ID}
+                    numColumns={1}
+                    data={selectServicemen}
+                    onEndReachedThreshold={0.1}
+                    renderItem={data =>
+                        <ServicemenCard
+                            data={data.item}
+                            selectIsAuth={selectIsAuth}
+                            navigation={navigation}
+                            updateHits={updateHits}
+                        />
+                    }
+                    onMomentumScrollBegin = {() => setEndReachedOnMomentum(true)}
+                    onEndReached={() => endReachedOnMomentum && !selectIsServicemenFetching 
+                        && pageNumber <= selectServicemenPages && incrementPage()
+                    }
+                />
+                {selectIsServicemenFetching &&
+                    <ActivityIndicator animating={true} size="large" color={Colors.primaryBackgroundColor} />
+                }
             </View>
         </ScreenContainer>
     )

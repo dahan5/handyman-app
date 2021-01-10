@@ -9,3 +9,4 @@ export const GET_SERVICEMEN = createRequestTypes('GET_SERVICEMEN');
 export const SET_SERVICEMEN = createFlagTypes('SET_SERVICEMEN');
 export const SET_CONTACT_HITS = createRequestTypes('SET_CONTACT_HITS');
 export const SET_TOTAL_PAGES = createFlagTypes("SET_TOTAL_PAGES");
+export const GET_SPECIFIC_SERVICE_DETAILS = createRequestTypes('GET_SPECIFIC_SERVICE_DETAILS');

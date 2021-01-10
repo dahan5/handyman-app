@@ -39,3 +39,8 @@ export const selectServicemenPages = createSelector(
     [services],
     val => _get(val, 'servicemen.totalPages')
 );
+
+export const selectServiceTypeDetails = createSelector(
+    [services],
+    val => _get(val, 'selectedService.data.0', {}),
+);

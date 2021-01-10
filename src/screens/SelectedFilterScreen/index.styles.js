@@ -11,12 +11,21 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'relative',
     },
     titleContainer: {
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    backgroundImage: {
+        width: "100%",
+        height: 350,
+        padding: 20,
+        paddingVertical: 40,
+        position: 'absolute',
+        top: 0
     },
     service: {
         display: 'flex',
@@ -42,7 +51,7 @@ export const styles = StyleSheet.create({
         width: '90%',
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginTop: 25,
+        marginTop: 75,
         backgroundColor: 'white',
         borderRadius: 10,
         shadowOffset: {
@@ -51,10 +60,9 @@ export const styles = StyleSheet.create({
         },
         shadowRadius: 10,
         shadowOpacity: .7,
-        overflow: 'hidden',
         padding: 10,
         paddingBottom: 20,
-        overflow: 'visible'
+        overflow: 'visible',
     },
     selectHeader: {
         borderBottomColor: '#cecece',
@@ -83,7 +91,7 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         left: 7,
         width: '100%',
-        bottom: -35,
+        bottom: -45,
         overflow: 'hidden'
     },
     buttonView: {
@@ -91,5 +99,18 @@ export const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         overflow: 'hidden'
+    },
+    button: {
+        backgroundColor: Colors.blue,
+        paddingHorizontal: 30,
+        paddingVertical: 10,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonText: {
+        fontSize: 24,
+        fontWeight: '400',
+        color: Colors.primaryBackgroundColor,
     }
 })

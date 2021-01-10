@@ -9,10 +9,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { styles } from "./index.styles"
 import {
-    getDistricts, getTaluka, getPlaces,
+    getDistricts, getTaluka, getPlaces, getServiceDetails,
 } from "../../redux/services/actions";
 import {
-    selectDistricts, selectTaluka, selectPlaces
+    selectDistricts, selectTaluka, selectPlaces, selectServiceTypeDetails
 } from "../../redux/services/selectors";
 import Colors from "../../utils/constants/colors";
 import ScreenContainer from "../../components/common/ScreenContainer"
@@ -22,7 +22,7 @@ const SelectedFilterScreen = props => {
 
     const {
         navigation, d__getDistricts, d__getTaluka, d__getPlaces, selectDistricts,
-        selectPlaces, selectTaluka, route,
+        selectPlaces, selectTaluka, route, d__getServiceDetails, selectServiceTypeDetails
     } = props;
 
     const { item } = route.params
@@ -47,6 +47,7 @@ const SelectedFilterScreen = props => {
     }
 
     useEffect(() => {
+        d__getServiceDetails({ service_type_id: SERVICE_TYPE_ID })
         d__getDistricts({ service_type_id: SERVICE_TYPE_ID });
     }, []);
 
@@ -67,61 +68,70 @@ const SelectedFilterScreen = props => {
 
     return (
         <ScreenContainer style={styles.container}>
-            <View style={styles.filterSection}>
-                <View style={styles.selectHeader}>
-                    <View>
-                        <Icon name="location-pin" size={24} color='#f40002' />
+            <View style={styles.screen}>
+                <Image
+                    source={{ uri: _get(selectServiceTypeDetails, 'MOB_BKGRD_IMG_LOC') }}
+                    style={styles.backgroundImage}
+                    imageStyle={{
+                        resizeMode: "cover",
+                        alignSelf: "flex-end"
+                    }}
+                />
+                <View style={styles.filterSection}>
+                    <View style={styles.selectHeader}>
+                        <View>
+                            <Icon name="location-pin" size={24} color='#f40002' />
+                        </View>
+                        <View>
+                            <Text style={styles.header}>Search by Location</Text>
+                        </View>
                     </View>
-                    <View>
-                        <Text style={styles.header}>Search by Location</Text>
-                    </View>
-                </View>
-                <View style={styles.dropdownContainer}>
-                    <Dropdown
-                        value={district}
-                        onValueChange={setDistrict}
-                        options={selectDistricts}
-                        mode={'dropdown'}
-                        label={"District"}
-                        name={"district"}
-                        uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_KEY_ID"}
-                        display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT"}
-                        marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_MR"}
-                    />
-                    <Dropdown
-                        value={taluka}
-                        onValueChange={setTaluka}
-                        options={selectTaluka}
-                        mode={'dropdown'}
-                        label={"Taluka"}
-                        name={"taluka"}
-                        uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_KEY_ID"}
-                        display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA"}
-                        marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_MR"}
-                        enabled={!!district}
-                    />
-                    <Dropdown
-                        value={city}
-                        onValueChange={setCity}
-                        options={selectPlaces}
-                        mode={'dropdown'}
-                        label={"Near by City/ Place"}
-                        name={"city"}
-                        uniqueKey={"VILLAGE_KEY_ID__VILLAGE_KEY_ID"}
-                        display={"VILLAGE_KEY_ID__VILLAGE"}
-                        marathi={"VILLAGE_KEY_ID__VILLAGE_MR"}
-                        enabled={!!taluka}
-                    />
-                    <View style={styles.buttonContainer}>
-                        <View style={styles.buttonView}>
-                            <TouchableOpacity>
-                                <Button
-                                    title='Search'
-                                    color={Colors.primaryButtonColor}
+                    <View style={styles.dropdownContainer}>
+                        <Dropdown
+                            value={district}
+                            onValueChange={setDistrict}
+                            options={selectDistricts}
+                            mode={'dropdown'}
+                            label={"District"}
+                            name={"district"}
+                            uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_KEY_ID"}
+                            display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT"}
+                            marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_MR"}
+                        />
+                        <Dropdown
+                            value={taluka}
+                            onValueChange={setTaluka}
+                            options={selectTaluka}
+                            mode={'dropdown'}
+                            label={"Taluka"}
+                            name={"taluka"}
+                            uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_KEY_ID"}
+                            display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA"}
+                            marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_MR"}
+                            enabled={!!district}
+                        />
+                        <Dropdown
+                            value={city}
+                            onValueChange={setCity}
+                            options={selectPlaces}
+                            mode={'dropdown'}
+                            label={"Near by City/ Place"}
+                            name={"city"}
+                            uniqueKey={"VILLAGE_KEY_ID__VILLAGE_KEY_ID"}
+                            display={"VILLAGE_KEY_ID__VILLAGE"}
+                            marathi={"VILLAGE_KEY_ID__VILLAGE_MR"}
+                            enabled={!!taluka}
+                        />
+                        <View style={styles.buttonContainer}>
+                            <View style={styles.buttonView}>
+                                <TouchableOpacity
+                                    style={styles.button}
                                     disabled={!(district && taluka && city)}
                                     onPress={navigate}
-                                />
-                            </TouchableOpacity>
+                                >
+                                    <Text style={styles.buttonText}>Search</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </View>
                 </View>
@@ -153,7 +163,7 @@ export const SelectedFilterOptions = data => {
 
 const mapStateToProps = createStructuredSelector({
     selectDistricts, selectTaluka,
-    selectPlaces,
+    selectPlaces, selectServiceTypeDetails,
 })
 
 const mapDispatchToProps = dispatch => {
@@ -161,6 +171,7 @@ const mapDispatchToProps = dispatch => {
         d__getDistricts: data => dispatch(getDistricts.request(data)),
         d__getTaluka: data => dispatch(getTaluka.request(data)),
         d__getPlaces: data => dispatch(getPlaces.request(data)),
+        d__getServiceDetails: data => dispatch(getServiceDetails.request(data)),
     }
 }
 
