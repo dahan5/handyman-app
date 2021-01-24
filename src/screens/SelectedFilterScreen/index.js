@@ -77,7 +77,7 @@ const SelectedFilterScreen = props => {
                         alignSelf: "flex-end"
                     }}
                 />
-                <View style={styles.filterSection}>
+                <View style={styles.filterSection} elevation={4} >
                     <View style={styles.selectHeader}>
                         <View>
                             <Icon name="location-pin" size={24} color='#f40002' />

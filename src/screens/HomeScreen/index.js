@@ -7,10 +7,11 @@ import { View, Text, FlatList, Image, Linking } from 'react-native';
 
 import { styles } from "./index.styles";
 import backgroundImage from "../../../assets/images/homepage-banner.png";
-import headerImage from "../../../assets/images/infohandyman.png";
 import howItWorks from "../../../assets/images/how_it_works.png";
 import { selectServices } from "../../redux/services/selectors";
 import { getServices } from "../../redux/services/actions";
+import MenuIcon from "../../components/common/MenuIcon";
+import Logo from "../../components/common/Logo";
 import ServiceCard from "../../components/cards/ServiceCard";
 import ScreenContainer from "../../components/common/ScreenContainer";
 
@@ -38,6 +39,24 @@ const HomeScreen = props => {
                     alignSelf: "flex-end"
                 }}
             />
+            <View style={styles.addService}>
+                <Icon.Button
+                    color="#03D269"
+                    backgroundColor="white"
+                    borderRadius={50}
+                    iconStyle={{ marginRight: 15 }}
+                >
+                    <View>
+                        <Text
+                            onPress={() => { }}
+                            style={styles.callNumber}
+                        >
+                            Add Your Services
+                        </Text>
+                    </View>
+                </Icon.Button>
+            </View>
+            <Text style={styles.or}>Or</Text>
             <View style={styles.contactUs}>
                 <Icon.Button
                     name="phone-call"
@@ -45,10 +64,9 @@ const HomeScreen = props => {
                     color="#03D269"
                     backgroundColor="white"
                     borderRadius={50}
-                    iconStyle={{ marginRight: 25, marginLeft: 10 }}
+                    iconStyle={{ marginRight: 15, marginLeft: 10 }}
                 >
                     <View>
-                        <Text style={styles.callUsText}>Call Us to register your services</Text>
                         <Text
                             onPress={() => Linking.openURL('tel:+918010614314')}
                             style={styles.callNumber}
@@ -84,10 +102,11 @@ const HomeScreen = props => {
     )
 }
 
-export const HomeOptions = {
-    headerTitle: <View style={styles.titleContainer}>
-        <Image source={headerImage} style={styles.titleImage} />
-    </View>
+export const HomeOptions = ({ navigation }) => {
+    return {
+        headerTitle: <Logo />,
+        headerLeft: () => <MenuIcon navigation={navigation} />,
+    }
 }
 
 const mapStateToProps = createStructuredSelector({

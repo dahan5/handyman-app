@@ -50,31 +50,35 @@ export const styles = StyleSheet.create({
     services: {
         paddingTop: SCREEN_WIDTH / 20,
     },
-    contactUs: {
-        width: SCREEN_WIDTH * .7,
+    or: {
+        marginVertical: 8,
+        color: Colors.primaryBackgroundColor,
+        textAlign: 'center',
+        fontSize: 18,
+        fontWeight: 'bold',
+        textShadowColor: Colors.primaryTextColor,
+        textShadowOffset: { height: 1 },
+        textShadowRadius: 10
+    },
+    addService: {
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginVertical: SCREEN_WIDTH / 8,
-        borderRadius: 50,
+        marginTop: SCREEN_WIDTH / 8,
+        paddingLeft: 15,
         backgroundColor: 'transparent',
     },
-    callUsText: {
-        color: Colors.blue,
-        fontSize: SCREEN_WIDTH / 25,
+    contactUs: {
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        marginBottom: SCREEN_WIDTH / 8,
+        paddingLeft: 15,
+        backgroundColor: 'transparent',
     },
     callNumber: {
         fontSize: SCREEN_WIDTH / 19,
         color: Colors.blue,
+        paddingRight: 10,
         fontWeight: 'bold'
-    },
-    titleImage: {
-        width: SCREEN_WIDTH / 2,
-        height: 35,
-    },
-    titleContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
     },
     howItWorks: {
         width: SCREEN_WIDTH,
