@@ -244,7 +244,7 @@ const MainDrawer = () => {
       drawerIcon: ({ color, size }) => <Icon color={color} size={size - 4} name={icon} />,
     }
   })
-  if (!showServices) screens.splice(2, 0, {
+  if (showServices) screens.splice(2, 0, {
     name: "UserServiceStack",
     component: UserServiceStack,
     options: {
