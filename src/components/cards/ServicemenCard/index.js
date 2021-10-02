@@ -12,7 +12,7 @@ const ServicemenCard = props => {
 
 
     const onButton = data => {
-        if(selectIsAuth) {
+        if (selectIsAuth) {
             updateHits(data.service_provider_id);
             Linking.openURL(`tel:+91${data.contact_data[0]}`)
         } else {
@@ -33,13 +33,13 @@ const ServicemenCard = props => {
                         <Text style={styles.label}>People Contacted</Text>
                         <Text style={styles.value}>{data.CONTACT_HITS}</Text>
                     </View>
-                    {data.sp_specialization && data.sp_specialization.length && data.sp_specialization !== "NA" &&
-                        <View style={styles.detail}>
-                            <Text style={styles.label}>Description</Text>
-                            <Text style={styles.value}>{data.sp_specialization}</Text>
-                        </View>
-                    }
                 </View>
+                {data.sp_specialization && data.sp_specialization.length && data.sp_specialization !== "NA" &&
+                    <View style={styles.specialization}>
+                        <Text style={styles.label}>Description</Text>
+                        <Text style={styles.value}>{data.sp_specialization}</Text>
+                    </View>
+                }
             </View>
             <View style={styles.right}>
                 <TouchableOpacity onPress={() => onButton(data)}>

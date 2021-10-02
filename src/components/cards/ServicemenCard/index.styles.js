@@ -32,13 +32,18 @@ export const styles = StyleSheet.create({
     },
     detailsContainer: {
         display: 'flex',
+        flex: 2,
         flexDirection: 'row',
         flexWrap: 'wrap',
         width: '100%'
     },
     detail: {
         width: '50%',
-        paddingVertical: 8
+        paddingVertical: 8,
+        flex: 1,
+    },
+    specialization: {
+        flex: 2,
     },
     label: {
         color: Colors.green,

@@ -323,7 +323,6 @@ const UserServicesForm = props => {
 export const UserServicesFormOptions = ({ navigation }) => {
   return {
     headerTitle: <Logo />,
-    headerLeft: () => <MenuIcon navigation={navigation} />,
   }
 }
 
