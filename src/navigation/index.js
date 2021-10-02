@@ -12,7 +12,7 @@ import {
   DrawerContentScrollView, DrawerItem,
 } from "@react-navigation/drawer";
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import Icon from "react-native-vector-icons/Ionicons"
+import Icon from "react-native-vector-icons/Ionicons";
 
 import { styles } from "./index.styles";
 import Colors from "../utils/constants/colors";

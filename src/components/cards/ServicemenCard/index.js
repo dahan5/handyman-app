@@ -29,10 +29,10 @@ const ServicemenCard = props => {
                         <Text style={styles.label}>Work Experience</Text>
                         <Text style={styles.value}>{data.service_start_date}</Text>
                     </View>
-                    <View style={styles.detail}>
+                    {/* <View style={styles.detail}>
                         <Text style={styles.label}>People Contacted</Text>
                         <Text style={styles.value}>{data.CONTACT_HITS}</Text>
-                    </View>
+                    </View> */}
                 </View>
                 {data.sp_specialization && data.sp_specialization.length && data.sp_specialization !== "NA" &&
                     <View style={styles.specialization}>
