@@ -5,9 +5,9 @@ import { FAILURE, SUCCESS } from "../action";
 export function* sendPayload(apiResponse, event) {
     yield put({
         serverDate: apiResponse.data.date,
-        type: !!apiResponse.data.success ? event[SUCCESS] : event[FAILURE],
+        type: !!apiResponse.data.success || apiResponse.status === 200 ? event[SUCCESS] : event[FAILURE],
         payload: apiResponse.data
-            ? apiResponse.data.success
+            ? apiResponse.data.success || apiResponse.status === 200
                 ? apiResponse.data.data
                 : apiResponse.data.error
             : {}

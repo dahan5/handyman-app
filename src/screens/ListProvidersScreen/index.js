@@ -69,7 +69,7 @@ const ListProvidersScreen = props => {
         <ScreenContainer style={styles.container}>
             <View style={styles.listContainer}>
                 <FlatList
-                    keyExtractor={item => item.SERVICE_PROVIDER_ID.toString()}
+                    keyExtractor={item => item.service_provider_id.toString()}
                     numColumns={1}
                     data={selectServicemen}
                     onEndReachedThreshold={0.1}
@@ -96,16 +96,16 @@ const ListProvidersScreen = props => {
 
 export const ListProvidersOptions = data => {
 
-    const { district, taluka, city } = data.route.params
-
+    const { state, district, taluka, city } = data.route.params
+    
     return {
         headerTitle: (
             <View style={styles.titleContainer}>
                 <Text numberOfLines={1} style={styles.text}>
-                    {`${district['VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT']} - ${taluka['VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA']} - ${city['VILLAGE_KEY_ID__VILLAGE']}`}
+                    {`${state['village_key__taluka_key__district_key__state_key__state']} - ${district['village_key__taluka_key__district_key__district']} - ${taluka['village_key__taluka_key__taluka']} - ${city['village_key__village']}`}
                 </Text>
                 <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>
-                    {`${district['VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_MR']} - ${taluka['VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_MR']} - ${city['VILLAGE_KEY_ID__VILLAGE_MR']}`}
+                    {`${state['village_key__taluka_key__district_key__state_key__state_mr']} - ${district['village_key__taluka_key__district_key__district_mr']} - ${taluka['village_key__taluka_key__taluka_mr']} - ${city['village_key__village_mr']}`}
                 </Text>
             </View>
         )

@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         paddingVertical: 3,
         color: Colors.secondaryTextColor,
+        textTransform: 'capitalize'
     },
     subtext: {
         fontSize: 12,

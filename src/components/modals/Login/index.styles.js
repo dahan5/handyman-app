@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
         width: SCREEN_WIDTH,
     },
     loginContainer: {
-        shadowColor: "#000",
         marginLeft: 'auto',
         marginRight: 'auto',
         position: 'relative',
@@ -31,6 +30,7 @@ export const styles = StyleSheet.create({
             width: 0,
             height: 2
         },
+        shadowColor: "#000",
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5,

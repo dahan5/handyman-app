@@ -17,7 +17,8 @@ export const styles = StyleSheet.create({
         marginVertical: 10,
     },
     left: {
-        flexGrow: 1
+        flexGrow: 1,
+        width: '80%',
     },
     name: {
         fontSize: 18,
@@ -33,17 +34,18 @@ export const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'wrap',
+        width: '100%'
     },
     detail: {
-        flex: .5,
-        paddingVertical: 7
+        width: '50%',
+        paddingVertical: 8
     },
     label: {
         color: Colors.green,
     },
     callButton: {
         overflow: 'hidden',
-        padding: 15,
+        padding: 16,
         width: 50,
         height: 50,
         borderRadius: 25,

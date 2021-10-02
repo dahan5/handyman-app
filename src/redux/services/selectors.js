@@ -10,6 +10,11 @@ export const selectServices = createSelector(
     val => _get(val, 'services.services', []),
 );
 
+export const selectStates = createSelector(
+    [services],
+    val => _get(val, 'states.states', []),
+);
+
 export const selectDistricts = createSelector(
     [services],
     val => _get(val, 'districts.districts', []),
@@ -23,6 +28,26 @@ export const selectTaluka = createSelector(
 export const selectPlaces = createSelector(
     [services],
     val => _get(val, 'places.places', []),
+);
+
+export const selectServiceTypeStates = createSelector(
+    [services],
+    val => _get(val, 'st_states.states', []),
+);
+
+export const selectServiceTypeDistricts = createSelector(
+    [services],
+    val => _get(val, 'st_districts.districts', []),
+);
+
+export const selectServiceTypeTaluka = createSelector(
+    [services],
+    val => _get(val, 'st_taluka.taluka', []),
+);
+
+export const selectServiceTypePlaces = createSelector(
+    [services],
+    val => _get(val, 'st_places.places', []),
 );
 
 export const selectIsServicemenFetching = createSelector(

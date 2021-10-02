@@ -13,7 +13,7 @@ const ServicemenCard = props => {
 
     const onButton = data => {
         if(selectIsAuth) {
-            updateHits(data.SERVICE_PROVIDER_ID);
+            updateHits(data.service_provider_id);
             Linking.openURL(`tel:+91${data.contact_data[0]}`)
         } else {
             navigation.navigate('Login')
@@ -23,20 +23,20 @@ const ServicemenCard = props => {
     return (
         <View style={styles.container}>
             <View style={styles.left}>
-                <Text style={styles.name}>{data.SP_NAME}</Text>
+                <Text style={styles.name}>{data.sp_name}</Text>
                 <View style={styles.detailsContainer}>
                     <View style={styles.detail}>
                         <Text style={styles.label}>Work Experience</Text>
-                        <Text style={styles.value}>{data.SERVICE_START_DATE}</Text>
+                        <Text style={styles.value}>{data.service_start_date}</Text>
                     </View>
                     <View style={styles.detail}>
                         <Text style={styles.label}>People Contacted</Text>
                         <Text style={styles.value}>{data.CONTACT_HITS}</Text>
                     </View>
-                    {data.SP_SPECIALIZATION && data.SP_SPECIALIZATION.length && data.SP_SPECIALIZATION !== "NA" &&
+                    {data.sp_specialization && data.sp_specialization.length && data.sp_specialization !== "NA" &&
                         <View style={styles.detail}>
-                            <Text style={styles.label}>Specialization</Text>
-                            <Text style={styles.value}>{data.SP_SPECIALIZATION}</Text>
+                            <Text style={styles.label}>Description</Text>
+                            <Text style={styles.value}>{data.sp_specialization}</Text>
                         </View>
                     }
                 </View>
@@ -44,7 +44,7 @@ const ServicemenCard = props => {
             <View style={styles.right}>
                 <TouchableOpacity onPress={() => onButton(data)}>
                     <View style={styles.callButton}>
-                        <Icon name="phone" size={28} color={Colors.blue} />
+                        <Icon name="phone" size={20} color={Colors.blue} />
                     </View>
                 </TouchableOpacity>
             </View>

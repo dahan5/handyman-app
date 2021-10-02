@@ -15,15 +15,15 @@ const ServiceCard = props => {
         >
             <View>
                 <Image
-                    source={{ uri: item['MOB_ICON_S3_LOC'] }}
+                    source={{ uri: item['web_icon_s3_loc'] }}
                     style={styles.image}
                     imageStyle={{
                         resizeMode: "contain",
                     }}
                 />
-                <Text numberOfLines={1} style={styles.text}>{item['SERVICE_NAME']}</Text>
-                {item['SERVICE_NAME_MR'] &&
-                    <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>({item['SERVICE_NAME_MR']})</Text>
+                <Text numberOfLines={1} style={styles.text}>{item['service_name']}</Text>
+                {item['service_name_mr'] &&
+                    <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>({item['service_name_mr']})</Text>
                 }
             </View>
         </TouchableOpacity>

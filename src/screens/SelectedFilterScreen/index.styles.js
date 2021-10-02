@@ -88,10 +88,10 @@ export const styles = StyleSheet.create({
         overflow: 'visible'
     },
     buttonContainer: {
-        position: 'absolute',
+        // position: 'absolute',
         left: 7,
         width: '100%',
-        bottom: -45,
+        // bottom: -45,
         overflow: 'hidden'
     },
     buttonView: {

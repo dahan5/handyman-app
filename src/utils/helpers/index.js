@@ -1,4 +1,4 @@
-import { get as _get } from "lodash";
+import _get from "lodash/get";
 import { ToastAndroid } from "react-native";
 
 export const validateSchemaAndProceed = (schema, object, callback) => {

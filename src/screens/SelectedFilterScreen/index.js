@@ -9,51 +9,71 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { styles } from "./index.styles"
 import {
-    getDistricts, getTaluka, getPlaces, getServiceDetails,
+    getServiceDetails,
+    getServiceTypeStates,
+    getServiceTypeDistricts,
+    getServiceTypeTaluka,
+    getServiceTypePlaces
 } from "../../redux/services/actions";
 import {
-    selectDistricts, selectTaluka, selectPlaces, selectServiceTypeDetails
+    selectServiceTypeDetails,
+    selectServiceTypeDistricts,
+    selectServiceTypeTaluka,
+    selectServiceTypeStates,
+    selectServiceTypePlaces
 } from "../../redux/services/selectors";
-import Colors from "../../utils/constants/colors";
 import ScreenContainer from "../../components/common/ScreenContainer"
 import Dropdown from '../../components/common/Dropdown';
 
 const SelectedFilterScreen = props => {
 
     const {
-        navigation, d__getDistricts, d__getTaluka, d__getPlaces, selectDistricts,
-        selectPlaces, selectTaluka, route, d__getServiceDetails, selectServiceTypeDetails
+        navigation, d__getDistricts, d__getTaluka, d__getPlaces, selectDistricts, selectStates,
+        selectPlaces, selectTaluka, route, d__getServiceDetails, selectServiceTypeDetails,
+        d__getStates
     } = props;
 
     const { item } = route.params
 
-    const { SERVICE_TYPE_ID } = item;
+    const { id } = item;
 
+    const [state, setState] = useState();
     const [district, setDistrict] = useState();
     const [taluka, setTaluka] = useState();
     const [city, setCity] = useState();
 
     const navigate = () => {
-        const d = _find(selectDistricts, o => o['VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_KEY_ID'] === district);
-        const t = _find(selectTaluka, o => o['VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_KEY_ID'] === taluka);
-        const c = _find(selectPlaces, o => o['VILLAGE_KEY_ID__VILLAGE_KEY_ID'] === city);
+        const s = _find(selectStates, o => o['village_key__taluka_key__district_key__state_key__id'] === state);
+        const d = _find(selectDistricts, o => o['village_key__taluka_key__district_key__id'] === district);
+        const t = _find(selectTaluka, o => o['village_key__taluka_key__id'] === taluka);
+        const c = _find(selectPlaces, o => o['village_key__id'] === city);
         navigation.navigate('ListProviders', {
+            state: s,
             district: d,
             taluka: t,
             city: c,
             cityId: city,
-            serviceId: SERVICE_TYPE_ID
+            serviceId: id
         });
     }
 
     useEffect(() => {
-        d__getServiceDetails({ service_type_id: SERVICE_TYPE_ID })
-        d__getDistricts({ service_type_id: SERVICE_TYPE_ID });
+        d__getServiceDetails({ service_type_id: id })
+        d__getStates({ service_type_id: id })
     }, []);
 
     useEffect(() => {
+        if (!!state) {
+            d__getDistricts({ service_type_id: id, state_key_id: state });
+            setDistrict(null)
+            setTaluka(null);
+            setCity(null);
+        }
+    }, [state])
+
+    useEffect(() => {
         if (!!district) {
-            d__getTaluka({ service_type_id: SERVICE_TYPE_ID, district_key_id: district });
+            d__getTaluka({ service_type_id: id, district_key_id: id });
             setTaluka(null);
             setCity(null);
         }
@@ -61,7 +81,7 @@ const SelectedFilterScreen = props => {
 
     useEffect(() => {
         if (!!taluka) {
-            d__getPlaces({ taluka_key_id: taluka, service_type_id: SERVICE_TYPE_ID });
+            d__getPlaces({ taluka_key_id: taluka, service_type_id: id });
             setCity(null);
         }
     }, [taluka]);
@@ -70,7 +90,7 @@ const SelectedFilterScreen = props => {
         <ScreenContainer style={styles.container}>
             <View style={styles.screen}>
                 <Image
-                    source={{ uri: _get(selectServiceTypeDetails, 'MOB_BKGRD_IMG_LOC') }}
+                    source={{ uri: _get(selectServiceTypeDetails, 'mob_bkgrd_img_loc') }}
                     style={styles.backgroundImage}
                     imageStyle={{
                         resizeMode: "cover",
@@ -88,15 +108,27 @@ const SelectedFilterScreen = props => {
                     </View>
                     <View style={styles.dropdownContainer}>
                         <Dropdown
+                            value={state}
+                            onValueChange={setState}
+                            options={selectStates}
+                            mode={'dropdown'}
+                            label={"State"}
+                            name={"state"}
+                            uniqueKey={"village_key__taluka_key__district_key__state_key__id"}
+                            display={"village_key__taluka_key__district_key__state_key__state"}
+                            marathi={"village_key__taluka_key__district_key__state_key__state_mr"}
+                        />
+                        <Dropdown
                             value={district}
                             onValueChange={setDistrict}
                             options={selectDistricts}
                             mode={'dropdown'}
                             label={"District"}
                             name={"district"}
-                            uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_KEY_ID"}
-                            display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT"}
-                            marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__DISTRICT_KEY_ID__DISTRICT_MR"}
+                            uniqueKey={"village_key__taluka_key__district_key__id"}
+                            display={"village_key__taluka_key__district_key__district"}
+                            marathi={"village_key__taluka_key__district_key__district_mr"}
+                            enabled={!!state}
                         />
                         <Dropdown
                             value={taluka}
@@ -105,9 +137,9 @@ const SelectedFilterScreen = props => {
                             mode={'dropdown'}
                             label={"Taluka"}
                             name={"taluka"}
-                            uniqueKey={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_KEY_ID"}
-                            display={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA"}
-                            marathi={"VILLAGE_KEY_ID__TALUKA_KEY_ID__TALUKA_MR"}
+                            uniqueKey={"village_key__taluka_key__id"}
+                            display={"village_key__taluka_key__id"}
+                            marathi={"village_key__taluka_key__taluka_mr"}
                             enabled={!!district}
                         />
                         <Dropdown
@@ -117,9 +149,9 @@ const SelectedFilterScreen = props => {
                             mode={'dropdown'}
                             label={"Near by City/ Place"}
                             name={"city"}
-                            uniqueKey={"VILLAGE_KEY_ID__VILLAGE_KEY_ID"}
-                            display={"VILLAGE_KEY_ID__VILLAGE"}
-                            marathi={"VILLAGE_KEY_ID__VILLAGE_MR"}
+                            uniqueKey={"village_key__id"}
+                            display={"village_key__village"}
+                            marathi={"village_key__village_mr"}
                             enabled={!!taluka}
                         />
                         <View style={styles.buttonContainer}>
@@ -148,11 +180,11 @@ export const SelectedFilterOptions = data => {
         headerTitle: (
             <View style={styles.titleContainer}>
                 <View style={styles.service}>
-                    <Image source={{ uri: item['MOB_ICON_S3_LOC'] }} style={styles.image} />
+                    <Image source={{ uri: item['web_icon_s3_loc'] }} style={styles.image} />
                     <View>
-                        <Text numberOfLines={1} style={styles.text}>{item['SERVICE_NAME']}</Text>
-                        {item['SERVICE_NAME_MR'] &&
-                            <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>{item['SERVICE_NAME_MR']}</Text>
+                        <Text numberOfLines={1} style={styles.text}>{item['service_name']}</Text>
+                        {item['service_name_mr'] &&
+                            <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>{item['service_name_mr']}</Text>
                         }
                     </View>
                 </View>
@@ -162,15 +194,19 @@ export const SelectedFilterOptions = data => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    selectDistricts, selectTaluka,
-    selectPlaces, selectServiceTypeDetails,
+    selectDistricts: selectServiceTypeDistricts,
+    selectTaluka: selectServiceTypeTaluka,
+    selectStates: selectServiceTypeStates,
+    selectPlaces: selectServiceTypePlaces,
+    selectServiceTypeDetails,
 })
 
 const mapDispatchToProps = dispatch => {
     return {
-        d__getDistricts: data => dispatch(getDistricts.request(data)),
-        d__getTaluka: data => dispatch(getTaluka.request(data)),
-        d__getPlaces: data => dispatch(getPlaces.request(data)),
+        d__getStates: data => dispatch(getServiceTypeStates.request(data)),
+        d__getDistricts: data => dispatch(getServiceTypeDistricts.request(data)),
+        d__getTaluka: data => dispatch(getServiceTypeTaluka.request(data)),
+        d__getPlaces: data => dispatch(getServiceTypePlaces.request(data)),
         d__getServiceDetails: data => dispatch(getServiceDetails.request(data)),
     }
 }
