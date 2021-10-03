@@ -73,7 +73,7 @@ const SelectedFilterScreen = props => {
 
     useEffect(() => {
         if (!!district) {
-            d__getTaluka({ service_type_id: id, district_key_id: id });
+            d__getTaluka({ service_type_id: id, district_key_id: district });
             setTaluka(null);
             setCity(null);
         }

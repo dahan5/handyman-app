@@ -22,7 +22,7 @@ const AboutUsScreen = () => {
                 </Text>
                 <Text style={styles.header}>The Team</Text>
                 <View style={styles.teamMember}>
-                    <Text style={styles.name}>D. styles. Tambe</Text>
+                    <Text style={styles.name}>D. S. Tambe</Text>
                     <Text style={styles.position}>Founder and CEO</Text>
                 </View>
                 <View style={styles.teamMember}>

@@ -10,36 +10,34 @@ import store from "./src/redux/store";
 import Navigator from "./src/navigation/";
 
 const fetchFonts = () => {
-    Font.loadAsync({
-        'nunito-sans': require('./assets/Fonts/NunitoSans-Regular.ttf'),
-        'nunito-sans-bold': require('./assets/Fonts/NunitoSans-Bold.ttf')
-    })
+  Font.loadAsync({
+    'nunito-sans': require('./assets/Fonts/NunitoSans-Regular.ttf'),
+    'nunito-sans-bold': require('./assets/Fonts/NunitoSans-Bold.ttf')
+  })
 }
 
 const App = () => {
 
-    const [resourcesLoaded, setResourcesLoaded] = useState(false);
+  const [resourcesLoaded, setResourcesLoaded] = useState(false);
 
-    useEffect(() => {
-        read();
-    }, [])
+  useEffect(read, []);
 
-    if (resourcesLoaded) {
-        return (
-            <Provider store={store}>
-                <StatusBar style="auto" />
-                <Navigator />
-            </Provider>
-        );
-    } else {
-        return (
-            <AppLoading
-                startAsync={fetchFonts}
-                onFinish={() => setResourcesLoaded(true)}
-                onError={(err) => console.log(err)}
-            />
-        )
-    }
+  if (resourcesLoaded) {
+    return (
+      <Provider store={store}>
+        <StatusBar style="auto" />
+        <Navigator />
+      </Provider>
+    );
+  } else {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setResourcesLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    )
+  }
 }
 
 export default App
