@@ -48,7 +48,7 @@ const initValues = {
   status: "pending",
 }
 
-const UserServicesForm = props => {
+const Screen = props => {
 
   const {
     selectServices,
@@ -316,6 +316,14 @@ const UserServicesForm = props => {
           </TouchableOpacity>
         </View>
       </View>
+    </ScreenContainer>
+  )
+}
+
+const UserServicesForm = props => {
+  return (
+    <ScreenContainer style={styles.container} showsVerticalScrollIndicator={false}>
+      <Screen {...props} />
     </ScreenContainer>
   )
 }

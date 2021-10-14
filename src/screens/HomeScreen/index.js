@@ -19,7 +19,7 @@ import Logo from "../../components/common/Logo";
 import ServiceCard from "../../components/cards/ServiceCard";
 import ScreenContainer from "../../components/common/ScreenContainer";
 
-const HomeScreen = props => {
+const Screen = props => {
 
   const { selectServices, d__getServices, navigation, selectIsAuth, selectUserProfile } = props;
 
@@ -46,8 +46,9 @@ const HomeScreen = props => {
     }
   }
 
+
   return (
-    <ScreenContainer style={styles.container} showsVerticalScrollIndicator={false}>
+    <View style={styles.container}>
       <Image
         source={{ uri: homepageBanner }}
         style={styles.backgroundImage}
@@ -118,6 +119,14 @@ const HomeScreen = props => {
           </Icon.Button>
         </View>
       </View>
+    </View>
+  )
+}
+
+const HomeScreen = props => {
+  return (
+    <ScreenContainer style={styles.container} showsVerticalScrollIndicator={false}>
+      <Screen {...props} />
     </ScreenContainer>
   )
 }

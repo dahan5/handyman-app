@@ -48,7 +48,7 @@ const IDTypes = [{
   key: "voter id card"
 }]
 
-const ProfileForm = props => {
+const Screen = props => {
 
   const {
     selectLoggedInUser, selectUserProfile = {}, d__createProfile,
@@ -189,6 +189,14 @@ const ProfileForm = props => {
           </TouchableOpacity>
         </View>
       </View>
+    </ScreenContainer>
+  )
+}
+
+const ProfileForm = props => {
+  return (
+    <ScreenContainer style={styles.container} showsVerticalScrollIndicator={false}>
+      <Screen {...props} />
     </ScreenContainer>
   )
 }

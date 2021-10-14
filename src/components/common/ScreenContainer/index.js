@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Children } from 'react';
 
 import {
   ScrollView, View, Platform,
@@ -25,6 +25,12 @@ const ScreenContainer = props => {
     wait(2000).then(() => setRefreshing(false));
   }, []);
 
+  const childrenWithProps = Children.map(children, child =>
+    React.isValidElement(child)
+      ? React.cloneElement(child, { refreshing, setRefreshing })
+      : child
+  );
+
   return (
     <ScrollView
       style={{ ...style }}
@@ -38,7 +44,7 @@ const ScreenContainer = props => {
         style={styles.flex}
       >
         <View style={styles.flex}>
-          {children}
+          {childrenWithProps}
         </View>
         <Footer />
       </KeyboardAvoidingView >

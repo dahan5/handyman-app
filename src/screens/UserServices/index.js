@@ -20,7 +20,7 @@ import ScreenContainer from "../../components/common/ScreenContainer";
 import MyServiceCard from '../../components/cards/MyServiceCard';
 import Colors from '../../utils/constants/colors';
 
-const UserServices = props => {
+const Screen = props => {
 
   const {
     selectUserServices, navigation, d__getServices,
@@ -63,6 +63,14 @@ const UserServices = props => {
           </View>
         }
       </View>
+    </ScreenContainer>
+  )
+}
+
+const UserServices = props => {
+  return (
+    <ScreenContainer style={styles.container} showsVerticalScrollIndicator={false}>
+      <Screen {...props} />
     </ScreenContainer>
   )
 }
