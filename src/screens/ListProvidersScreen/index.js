@@ -81,8 +81,8 @@ const ListProvidersScreen = props => {
                             updateHits={updateHits}
                         />
                     }
-                    onMomentumScrollBegin = {() => setEndReachedOnMomentum(true)}
-                    onEndReached={() => endReachedOnMomentum && !selectIsServicemenFetching 
+                    onMomentumScrollBegin={() => setEndReachedOnMomentum(true)}
+                    onEndReached={() => endReachedOnMomentum && !selectIsServicemenFetching
                         && pageNumber <= selectServicemenPages && incrementPage()
                     }
                 />
@@ -97,7 +97,7 @@ const ListProvidersScreen = props => {
 export const ListProvidersOptions = data => {
 
     const { state, district, taluka, city } = data.route.params
-    
+
     return {
         headerTitle: (
             <View style={styles.titleContainer}>

@@ -138,7 +138,7 @@ const SelectedFilterScreen = props => {
                             label={"Taluka"}
                             name={"taluka"}
                             uniqueKey={"village_key__taluka_key__id"}
-                            display={"village_key__taluka_key__id"}
+                            display={"village_key__taluka_key__taluka"}
                             marathi={"village_key__taluka_key__taluka_mr"}
                             enabled={!!district}
                         />

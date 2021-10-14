@@ -194,8 +194,14 @@ const MainDrawer = () => {
   const showProfile = !isAdmin && isAuth;
   const showServices = !isAdmin && !_isEmpty(userProfile) && userProfile.ser_prof_appr_status === 'APPROVED';
   const profileSubText = _isEmpty(userProfile) ? 'add' : userProfile.ser_prof_appr_status.toLowerCase();
-  const color = profileSubText === 'add' ? '#212121' : (profileSubText === 'pending' ? '' : '#03D269');
   const icon = profileSubText === 'add' ? 'person-add-outline' : 'person-outline';
+  const color = profileSubText === 'add'
+    ? '#212121'
+    : (profileSubText === 'pending'
+      ? ''
+      : (profileSubText === 'rejected'
+        ? Colors.red
+        : '#03D269'));
 
   const profileTitle = focused => (
     <View style={styles.profileTitle}>

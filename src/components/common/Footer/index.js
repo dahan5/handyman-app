@@ -14,14 +14,14 @@ const Footer = () => {
                     name="facebook"
                     color="white"
                     style={styles.icon}
-                    onPress={() => Linking.openURL('https://www.facebook.com/callhandymanservices')}
+                    onPress={() => Linking.openURL('https://www.facebook.com/infohandymanservices')}
                 />
                 <Icon
                     size={32}
                     name="instagram"
                     color="white"
                     style={styles.icon}
-                    onPress={() => Linking.openURL('https://www.instagram.com/infohandyman.com_by_chs/')}
+                    onPress={() => Linking.openURL('https://www.instagram.com/infohandyman_service')}
                 />
                 <Icon
                     size={32}

@@ -50,7 +50,10 @@ export const styles = StyleSheet.create({
     profileStatus: color => (
         {
             textTransform: 'capitalize',
-            color: color || '#212121'
+            color: color || '#212121',
+            textShadowColor: 'rgb(256, 256, 256)',
+            textShadowOffset: { width: -1, height: 1 },
+            textShadowRadius: 10
         }
     ),
     labelStyle: {
