@@ -20,12 +20,6 @@ const ContactUs = () => {
           8010614314
         </Text>
         <Text
-          onPress={() => Linking.openURL('tel:+8999340680')}
-          style={styles.textContent}
-        >
-          8999340680
-        </Text>
-        <Text
           onPress={() => Linking.openURL('mailto:infohandyman21@gmail.com')}
           style={styles.textContent}
         >
