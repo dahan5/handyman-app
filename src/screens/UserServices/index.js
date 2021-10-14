@@ -31,8 +31,6 @@ const UserServices = props => {
     d__getServices({ ser_prof_id: selectUserProfile.id })
   }, [])
 
-  console.log(selectUserServices)
-
   return (
     <ScreenContainer
       style={styles.container}

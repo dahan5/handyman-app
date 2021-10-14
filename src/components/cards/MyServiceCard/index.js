@@ -15,8 +15,6 @@ const MyServiceCard = props => {
 
   const { data } = props
 
-  console.log(`data.sp_appr_status`, data.sp_appr_status)
-
   return (
     <View style={styles.container}>
       <View style={styles.flexContainer}>
