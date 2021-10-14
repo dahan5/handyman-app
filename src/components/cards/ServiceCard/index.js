@@ -22,9 +22,9 @@ const ServiceCard = props => {
                     }}
                 />
                 <Text numberOfLines={1} style={styles.text}>{item['service_name']}</Text>
-                {item['service_name_mr'] &&
+                {/* {item['service_name_mr'] &&
                     <Text numberOfLines={1} style={{ ...styles.text, ...styles.subtext }}>({item['service_name_mr']})</Text>
-                }
+                } */}
             </View>
         </TouchableOpacity>
     )
