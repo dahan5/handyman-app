@@ -66,31 +66,29 @@ const Screen = props => {
   }, [])
 
   return (
-    <ScreenContainer style={styles.container}>
-      <View style={styles.listContainer}>
-        <FlatList
-          keyExtractor={item => item.service_provider_id.toString()}
-          numColumns={1}
-          data={selectServicemen}
-          onEndReachedThreshold={0.1}
-          renderItem={data =>
-            <ServicemenCard
-              data={data.item}
-              selectIsAuth={selectIsAuth}
-              navigation={navigation}
-              updateHits={updateHits}
-            />
-          }
-          onMomentumScrollBegin={() => setEndReachedOnMomentum(true)}
-          onEndReached={() => endReachedOnMomentum && !selectIsServicemenFetching
-            && pageNumber <= selectServicemenPages && incrementPage()
-          }
-        />
-        {selectIsServicemenFetching &&
-          <ActivityIndicator animating={true} size="large" color={Colors.primaryBackgroundColor} />
+    <View style={styles.listContainer}>
+      <FlatList
+        keyExtractor={item => item.service_provider_id.toString()}
+        numColumns={1}
+        data={selectServicemen}
+        onEndReachedThreshold={0.1}
+        renderItem={data =>
+          <ServicemenCard
+            data={data.item}
+            selectIsAuth={selectIsAuth}
+            navigation={navigation}
+            updateHits={updateHits}
+          />
         }
-      </View>
-    </ScreenContainer>
+        onMomentumScrollBegin={() => setEndReachedOnMomentum(true)}
+        onEndReached={() => endReachedOnMomentum && !selectIsServicemenFetching
+          && pageNumber <= selectServicemenPages && incrementPage()
+        }
+      />
+      {selectIsServicemenFetching &&
+        <ActivityIndicator animating={true} size="large" color={Colors.primaryBackgroundColor} />
+      }
+    </View>
   )
 }
 

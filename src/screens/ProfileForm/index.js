@@ -102,10 +102,7 @@ const Screen = props => {
   }, [selectUserProfile])
 
   return (
-    <ScreenContainer
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
+    <View>
       <TextInput
         value={values.name}
         label="Name*"
@@ -189,7 +186,7 @@ const Screen = props => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScreenContainer>
+    </View>
   )
 }
 

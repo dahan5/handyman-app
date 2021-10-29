@@ -48,7 +48,7 @@ const Screen = props => {
 
 
   return (
-    <View style={styles.container}>
+    <View>
       <Image
         source={{ uri: homepageBanner }}
         style={styles.backgroundImage}

@@ -176,10 +176,7 @@ const Screen = props => {
   }, [selectIsUserServiceSaved])
 
   return (
-    <ScreenContainer
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
+    <View>
       <View style={styles.form}>
         <View style={styles.header}>
           <Text style={styles.step}>1</Text>
@@ -316,7 +313,7 @@ const Screen = props => {
           </TouchableOpacity>
         </View>
       </View>
-    </ScreenContainer>
+    </View>
   )
 }
 

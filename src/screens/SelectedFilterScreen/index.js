@@ -87,88 +87,86 @@ const Screen = props => {
   }, [taluka]);
 
   return (
-    <ScreenContainer style={styles.container}>
-      <View style={styles.screen}>
-        <Image
-          source={{ uri: _get(selectServiceTypeDetails, 'mob_bkgrd_img_loc') }}
-          style={styles.backgroundImage}
-          imageStyle={{
-            resizeMode: "cover",
-            alignSelf: "flex-end"
-          }}
-        />
-        <View style={styles.filterSection} elevation={4} >
-          <View style={styles.selectHeader}>
-            <View>
-              <Icon name="location-pin" size={24} color='#f40002' />
-            </View>
-            <View>
-              <Text style={styles.header}>Search by Location</Text>
-            </View>
+    <View style={styles.screen}>
+      <Image
+        source={{ uri: _get(selectServiceTypeDetails, 'mob_bkgrd_img_loc') }}
+        style={styles.backgroundImage}
+        imageStyle={{
+          resizeMode: "cover",
+          alignSelf: "flex-end"
+        }}
+      />
+      <View style={styles.filterSection} elevation={4} >
+        <View style={styles.selectHeader}>
+          <View>
+            <Icon name="location-pin" size={24} color='#f40002' />
           </View>
-          <View style={styles.dropdownContainer}>
-            <Dropdown
-              value={state}
-              onValueChange={setState}
-              options={selectStates}
-              mode={'dropdown'}
-              label={"State"}
-              name={"state"}
-              uniqueKey={"village_key__taluka_key__district_key__state_key__id"}
-              display={"village_key__taluka_key__district_key__state_key__state"}
-              marathi={"village_key__taluka_key__district_key__state_key__state_mr"}
-            />
-            <Dropdown
-              value={district}
-              onValueChange={setDistrict}
-              options={selectDistricts}
-              mode={'dropdown'}
-              label={"District"}
-              name={"district"}
-              uniqueKey={"village_key__taluka_key__district_key__id"}
-              display={"village_key__taluka_key__district_key__district"}
-              marathi={"village_key__taluka_key__district_key__district_mr"}
-              enabled={!!state}
-            />
-            <Dropdown
-              value={taluka}
-              onValueChange={setTaluka}
-              options={selectTaluka}
-              mode={'dropdown'}
-              label={"Taluka"}
-              name={"taluka"}
-              uniqueKey={"village_key__taluka_key__id"}
-              display={"village_key__taluka_key__taluka"}
-              marathi={"village_key__taluka_key__taluka_mr"}
-              enabled={!!district}
-            />
-            <Dropdown
-              value={city}
-              onValueChange={setCity}
-              options={selectPlaces}
-              mode={'dropdown'}
-              label={"Near by City/ Place"}
-              name={"city"}
-              uniqueKey={"village_key__id"}
-              display={"village_key__village"}
-              marathi={"village_key__village_mr"}
-              enabled={!!taluka}
-            />
-            <View style={styles.buttonContainer}>
-              <View style={styles.buttonView}>
-                <TouchableOpacity
-                  style={styles.button}
-                  disabled={!(district && taluka && city)}
-                  onPress={navigate}
-                >
-                  <Text style={styles.buttonText}>Search</Text>
-                </TouchableOpacity>
-              </View>
+          <View>
+            <Text style={styles.header}>Search by Location</Text>
+          </View>
+        </View>
+        <View style={styles.dropdownContainer}>
+          <Dropdown
+            value={state}
+            onValueChange={setState}
+            options={selectStates}
+            mode={'dropdown'}
+            label={"State"}
+            name={"state"}
+            uniqueKey={"village_key__taluka_key__district_key__state_key__id"}
+            display={"village_key__taluka_key__district_key__state_key__state"}
+            marathi={"village_key__taluka_key__district_key__state_key__state_mr"}
+          />
+          <Dropdown
+            value={district}
+            onValueChange={setDistrict}
+            options={selectDistricts}
+            mode={'dropdown'}
+            label={"District"}
+            name={"district"}
+            uniqueKey={"village_key__taluka_key__district_key__id"}
+            display={"village_key__taluka_key__district_key__district"}
+            marathi={"village_key__taluka_key__district_key__district_mr"}
+            enabled={!!state}
+          />
+          <Dropdown
+            value={taluka}
+            onValueChange={setTaluka}
+            options={selectTaluka}
+            mode={'dropdown'}
+            label={"Taluka"}
+            name={"taluka"}
+            uniqueKey={"village_key__taluka_key__id"}
+            display={"village_key__taluka_key__taluka"}
+            marathi={"village_key__taluka_key__taluka_mr"}
+            enabled={!!district}
+          />
+          <Dropdown
+            value={city}
+            onValueChange={setCity}
+            options={selectPlaces}
+            mode={'dropdown'}
+            label={"Near by City/ Place"}
+            name={"city"}
+            uniqueKey={"village_key__id"}
+            display={"village_key__village"}
+            marathi={"village_key__village_mr"}
+            enabled={!!taluka}
+          />
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttonView}>
+              <TouchableOpacity
+                style={styles.button}
+                disabled={!(district && taluka && city)}
+                onPress={navigate}
+              >
+                <Text style={styles.buttonText}>Search</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
       </View>
-    </ScreenContainer>
+    </View>
   )
 }
 

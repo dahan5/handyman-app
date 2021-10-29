@@ -32,38 +32,33 @@ const Screen = props => {
   }, [])
 
   return (
-    <ScreenContainer
-      style={styles.container}
-      showsVerticalScrollIndicator={false}
-    >
-      <View style={styles.servicesContainer}>
-        {selectUserServices.length
-          ? <View style={styles.myServices}>
-            {selectUserServices.map(service => (
-              <MyServiceCard
-                data={service}
-                key={service.id}
-              />
-            ))}
-            <TouchableOpacity
-              style={styles.addService}
-              onPress={() => navigation.navigate("UserServiceStack", { screen: 'UserServicesForm' })}
-            >
-              <Text style={styles.button}>Add Service</Text>
-            </TouchableOpacity>
-          </View>
-          : <View style={styles.noServices}>
-            <Text>You have not registered a service yet. Add one now.</Text>
-            <TouchableOpacity
-              style={styles.addService}
-              onPress={() => navigation.navigate("UserServiceStack", { screen: 'UserServicesForm' })}
-            >
-              <Text style={styles.button}>Add Service</Text>
-            </TouchableOpacity>
-          </View>
-        }
-      </View>
-    </ScreenContainer>
+    <View style={styles.servicesContainer}>
+      {selectUserServices.length
+        ? <View style={styles.myServices}>
+          {selectUserServices.map(service => (
+            <MyServiceCard
+              data={service}
+              key={service.id}
+            />
+          ))}
+          <TouchableOpacity
+            style={styles.addService}
+            onPress={() => navigation.navigate("UserServiceStack", { screen: 'UserServicesForm' })}
+          >
+            <Text style={styles.button}>Add Service</Text>
+          </TouchableOpacity>
+        </View>
+        : <View style={styles.noServices}>
+          <Text>You have not registered a service yet. Add one now.</Text>
+          <TouchableOpacity
+            style={styles.addService}
+            onPress={() => navigation.navigate("UserServiceStack", { screen: 'UserServicesForm' })}
+          >
+            <Text style={styles.button}>Add Service</Text>
+          </TouchableOpacity>
+        </View>
+      }
+    </View>
   )
 }
 
