@@ -22,8 +22,8 @@ const S3Upload = props => {
   const [uploading, setUploading] = useState(false);
 
   const s3Bucket = new AWS.S3({
-    accessKeyId: "AKIA4PAL6VO4SJ6KKJFN",
-    secretAccessKey: "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",
+    accessKeyId: ACCESS_KEY_AWS,
+    secretAccessKey: SECRET_KEY_AWS,
     region: config.AMAZON_REGION,
     Bucket: config.AMAZON_S3_BUCKET,
     signatureVersion: "v4",
